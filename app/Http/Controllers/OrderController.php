@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use App\Mail\TiketMail;
 use Illuminate\Http\Request;
+use App\Jobs\SendTiketPdfJob;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 
 class OrderController extends Controller
@@ -78,7 +80,7 @@ class OrderController extends Controller
                 if (in_array($json['transaction_status'], ['capture', 'settlement'])) {
                     $order->update(['status' => 'paid']);
                     // Kirim email dengan tiket PDF
-                    Mail::to($order->email)->send(new TiketMail($order));
+                    dispatch(new SendTiketPdfJob($order));
                 } elseif ($json['transaction_status'] == 'expire') {
                     $order->update(['status' => 'expired']);
                 } elseif ($json['transaction_status'] == 'cancel') {
@@ -86,6 +88,9 @@ class OrderController extends Controller
                 }
             }
         }
+
+        Log::info('Callback from Midtrans:', $request->all());
+        Log::info('Order found:', ['order_id' => $order->id ?? null]);
     }
 
 
