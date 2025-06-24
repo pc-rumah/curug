@@ -32,31 +32,24 @@ class TiketMail extends Mailable
         // Generate PDF menggunakan FPDI
         $pdf = new Fpdi();
         $pdf->AddPage();
-        $pdf->setSourceFile(storage_path('app/public/tiket-template.pdf'));
+        $pdf->setSourceFile(storage_path('app/public/tiket.pdf'));
         $templateId = $pdf->importPage(1);
         $pdf->useTemplate($templateId);
 
         $pdf->SetFont('Arial', '', 12);
         $pdf->SetTextColor(0, 0, 0);
 
-        $pdf->SetXY(30, 145);
+        $pdf->SetXY(73, 16);
+        $pdf->SetFont('Arial', '', 14); // Ukuran font agak besar
         $pdf->Write(0, $this->order->name);
 
-        $pdf->SetXY(30, 112);
-        $pdf->Write(0, 'TIKET-' . str_pad($this->order->id, 4, '0', STR_PAD_LEFT));
+        $pdf->SetXY(100, 60); // Tengah kotak hijau horizontal
+        $pdf->SetFont('Arial', 'B', 12); // Tebal dan sedikit besar
+        $pdf->Write(0, str_pad($this->order->order_code, 4, '0', STR_PAD_LEFT));
 
-        $pdf->SetXY(135, 112);
-        $pdf->Write(0, 'Rp' . number_format($this->order->total_price, 0, ',', '.'));
-
-        $pdf->SetXY(30, 155);
+        $pdf->SetXY(175, 60); // Kanan dari teks "JUMLAH TIKET ="
+        $pdf->SetFont('Arial', 'B', 12);
         $pdf->Write(0, $this->order->qty . ' Tiket');
-
-        $pdf->SetXY(30, 165);
-        $pdf->Write(0, $this->order->no_telp);
-
-        $pdf->SetXY(30, 175);
-        $pdf->Write(0, $this->order->email);
-
 
         // Simpan PDF sementara
         $pdfPath = storage_path('app/public/tiket_' . $this->order->id . '.pdf');

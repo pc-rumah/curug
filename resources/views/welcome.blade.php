@@ -52,6 +52,7 @@
                     <li><a href="#wahana">Wahana</a></li>
                     <li><a href="#testimonials">Kata Pengunjung</a></li>
                     <li><a href="#tiket">Beli Tiket</a></li>
+                    <li><a href="/pembeli">Daftar Pembeli</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
                 <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
@@ -61,18 +62,16 @@
     </header>
 
     <main class="main">
-
         <!-- Hero Section -->
         <section id="hero" class="hero section accent-background">
-
-            <img src="{{ asset('/storage/' . $setting->sampul) }}" alt="gambar sampul" data-aos="fade-in">
-
+            @if (isset($setting->sampul))
+                <img src="{{ asset('/storage/' . $setting->sampul) }}" alt="gambar sampul" data-aos="fade-in">
+            @endif
             <div class="container text-center" data-aos="fade-up" data-aos-delay="100">
                 <h2>{{ $setting->text_sambutan ?? 'bagian text' }}</h2>
                 <p>{{ $setting->desc_sambutan ?? 'bagian deskripsi' }}</p>
                 <a href="#about" class="btn-scroll" title="Scroll Down"><i class="bi bi-chevron-down"></i></a>
             </div>
-
         </section><!-- /Hero Section -->
 
         <!-- About Section -->
@@ -198,7 +197,6 @@
 
         <!-- Portfolio Section -->
         <section id="dokumentasi" class="portfolio section">
-
             <!-- Section Title -->
             <div class="container section-title" data-aos="fade-up">
                 <h2>Dokumentasi</h2>
@@ -208,7 +206,6 @@
             <div class="container">
                 <div class="isotope-layout" data-default-filter="*" data-layout="masonry"
                     data-sort="original-order">
-
                     <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
                         @forelse ($dokumentasi as $item)
                             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
@@ -230,6 +227,7 @@
                         <!-- End Portfolio Item -->
                     </div><!-- End Portfolio Container -->
                 </div>
+
                 <div class="row" data-aos="fade-up">
                     <div class="col-lg-12 d-flex justify-content-center">
                         <a href="{{ route('all') }}" class="mt-2 btn btn-primary text-center">Lihat
@@ -237,7 +235,6 @@
                     </div>
                 </div>
             </div>
-
         </section><!-- /Portfolio Section -->
 
         <!-- wahana Section -->
@@ -398,13 +395,10 @@
 
         <!-- Contact Section -->
         <section id="contact" class="contact section">
-
-            <!-- Section Title -->
             <div class="container section-title" data-aos="fade-up">
                 <h2>Kontak Kami</h2>
                 <p>Berikut Kontak Kami</p>
             </div><!-- End Section Title -->
-
             <div class="container" data-aos="fade-up" data-aos-delay="100">
                 <div class="row gy-4">
                     <div class="col-lg-5">
@@ -429,7 +423,7 @@
                                 <i class="bi bi-envelope flex-shrink-0"></i>
                                 <div>
                                     <h3>Email Kami</h3>
-                                    <p>{{ $setting->email }}</p>
+                                    <p>{{ $setting->email ?? 'test@example.com' }}</p>
                                 </div>
                             </div><!-- End Info Item -->
 
@@ -496,23 +490,24 @@
     </main>
 
     <footer id="footer" class="footer dark-background">
-
         <div class="container footer-top">
             <div class="row gy-4">
                 <div class="col-lg-12 align-item-center col-md-6 footer-about">
                     <a class="logo d-flex align-items-center">
-                        <span class="sitename">{{ $setting->judul_halaman }}</span>
+                        <span class="sitename">{{ $setting->judul_halaman ?? 'ini judul' }}</span>
                     </a>
                     <div class="footer-contact pt-3">
-                        <p>{{ $setting->desc_web }}</p>
-                        <p>{{ $setting->alamat }}</p>
-                        <p class="mt-3"><strong>Phone:</strong> <span>{{ $setting->phone }}</span></p>
-                        <p><strong>Email:</strong> <span>{{ $setting->email }}</span></p>
+                        <p>{{ $setting->desc_web ?? 'ini desc' }}</p>
+                        <p>{{ $setting->alamat ?? 'ini alamat' }}</p>
+                        <p class="mt-3"><strong>Phone:</strong>
+                            <span>{{ $setting->phone ?? 'ini nomer telp' }}</span>
+                        </p>
+                        <p><strong>Email:</strong> <span>{{ $setting->email ?? 'ini email' }}</span></p>
                     </div>
                     <div class="social-links d-flex mt-4">
-                        <a href="{{ $setting->twitter }}"><i class="bi bi-twitter-x"></i></a>
-                        <a href="{{ $setting->facebook }}"><i class="bi bi-facebook"></i></a>
-                        <a href="{{ $setting->instagram }}"><i class="bi bi-instagram"></i></a>
+                        <a href="{{ $setting->twitter ?? '#' }}"><i class="bi bi-twitter-x"></i></a>
+                        <a href="{{ $setting->facebook ?? '#' }}"><i class="bi bi-facebook"></i></a>
+                        <a href="{{ $setting->instagram ?? '#' }}"><i class="bi bi-instagram"></i></a>
                     </div>
                 </div>
             </div>

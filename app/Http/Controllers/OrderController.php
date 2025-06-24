@@ -96,7 +96,6 @@ class OrderController extends Controller
         if (!$order) {
             return abort(404, 'Invoice tidak ditemukan');
         }
-
         return view('etiket.invoice', compact('order'));
     }
 
@@ -104,5 +103,11 @@ class OrderController extends Controller
     {
         $orders = Order::all();
         return view('datatiket.index', compact('orders'));
+    }
+
+    public function pembeli()
+    {
+        $data = Order::all();
+        return view('pembeli', compact('data',));
     }
 }
