@@ -32,7 +32,8 @@ class TiketMail extends Mailable
         // Generate PDF menggunakan FPDI
         $pdf = new Fpdi();
         $pdf->AddPage();
-        $pdf->setSourceFile(storage_path('app/public/tiket.pdf'));
+        // $pdf->setSourceFile(storage_path('app/public/tiket.pdf'));
+        $pdf->setSourceFile(public_path('tiket.pdf'));
         $templateId = $pdf->importPage(1);
         $pdf->useTemplate($templateId);
 
