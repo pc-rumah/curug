@@ -80,7 +80,8 @@ class OrderController extends Controller
                 if (in_array($json['transaction_status'], ['capture', 'settlement'])) {
                     $order->update(['status' => 'paid']);
                     // Kirim email dengan tiket PDF
-                    dispatch(new SendTiketPdfJob($order));
+                    Mail::to($order->email)->send(new TiketMail($order));
+                    // dispatch(new SendTiketPdfJob($order));
                 } elseif ($json['transaction_status'] == 'expire') {
                     $order->update(['status' => 'expired']);
                 } elseif ($json['transaction_status'] == 'cancel') {
