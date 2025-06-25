@@ -40,15 +40,17 @@ class TiketMail extends Mailable
         $pdf->SetFont('Arial', '', 12);
         $pdf->SetTextColor(0, 0, 0);
 
-        $pdf->SetXY(73, 16);
-        $pdf->SetFont('Arial', '', 14); // Ukuran font agak besar
+        $pdf->SetXY(75, 16);
+        $pdf->SetFont('Arial', '', 14);
+        $pdf->SetTextColor(0, 51, 102);
         $pdf->Write(0, $this->order->name);
 
-        $pdf->SetXY(100, 60); // Tengah kotak hijau horizontal
-        $pdf->SetFont('Arial', 'B', 12); // Tebal dan sedikit besar
+        $pdf->SetXY(100, 59);
+        $pdf->SetFont('Courier', 'B', 10);
+        $pdf->SetTextColor(255, 255, 255);
         $pdf->Write(0, str_pad($this->order->order_code, 4, '0', STR_PAD_LEFT));
 
-        $pdf->SetXY(175, 60); // Kanan dari teks "JUMLAH TIKET ="
+        $pdf->SetXY(170, 59);
         $pdf->SetFont('Arial', 'B', 12);
         $pdf->Write(0, $this->order->qty . ' Tiket');
 
