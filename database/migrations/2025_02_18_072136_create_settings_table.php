@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('judul_halaman');
             $table->string('text_sambutan');
-            $table->string('desc_sambutan');
+            $table->text('desc_sambutan');
             $table->string('sampul');
-            $table->string('desc_web');
+            $table->text('desc_web');
             $table->string('alamat');
             $table->string('phone');
             $table->string('email');

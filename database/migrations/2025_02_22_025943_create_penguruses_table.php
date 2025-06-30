@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('foto_profile');
-            $table->integer('no_telp');
+            $table->string('no_telp');
             $table->string('email');
             $table->string('instagram');
             $table->string('jabatan');
