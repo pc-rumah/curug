@@ -91,28 +91,44 @@
 
                             <div class="col-md-6 icon-box position-relative">
                                 <i class="bi bi-tree"></i>
-                                <h4><a href="" class="stretched-link">Explore Alam</a></h4>
-                                <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip
+                                <h4><a href="#" class="stretched-link">Explore Alam</a></h4>
+                                <p style="text-align: justify;">
+                                    menjelajahi keindahan dan keanekaragaman lingkungan alam memberikan pengalaman
+                                    petualangan yang menyenangkan, tetapi juga meningkatkan kesadaran akan pentingnya
+                                    menjaga kelestarian alam.
                                 </p>
                             </div><!-- Icon-Box -->
 
                             <div class="col-md-6 icon-box position-relative">
                                 <i class="bi bi-cup-hot"></i>
-                                <h4><a href="" class="stretched-link">Cafe</a></h4>
-                                <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                                <h4><a href="#" class="stretched-link">Cafe</a></h4>
+                                <p style="text-align: justify;">
+                                    Terletak di tengah rindangnya hutan pinus, kafe ini menawarkan suasana tenang dan
+                                    sejuk yang menyatu dengan alam. Dikelilingi pepohonan tinggi dan semilir angin
+                                    pegunungan, setiap cangkir kopi yang disajikan menjadi pengalaman relaksasi
+                                    tersendiri.
                                 </p>
                             </div><!-- Icon-Box -->
 
                             <div class="col-md-6 icon-box position-relative">
                                 <i class="bi bi-water"></i>
-                                <h4><a href="" class="stretched-link">Kolam Renang</a></h4>
-                                <p>Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis facere</p>
+                                <h4><a href="#" class="stretched-link">Kolam Renang</a></h4>
+                                <p style="text-align: justify;">
+                                    Kolam renang alami yang terletak di tengah hutan pinus ini menawarkan sensasi
+                                    berenang yang unik dan menyegarkan. Dikelilingi oleh pepohonan hijau dan udara sejuk
+                                    pegunungan, tempat ini menjadi pelarian sempurna dari hiruk-pikuk kota.
+                                </p>
                             </div><!-- Icon-Box -->
 
                             <div class="col-md-6 icon-box position-relative">
                                 <i class="bi bi-house-door"></i>
-                                <h4><a href="" class="stretched-link">Rumah Pohon</a></h4>
-                                <p>Expedita veritatis consequuntur nihil tempore laudantium vitae denat pacta</p>
+                                <h4><a href="#" class="stretched-link">Rumah Pohon</a></h4>
+                                <p style="text-align: justify;">
+                                    Bertengger di antara pepohonan pinus yang menjulang, rumah pohon ini menghadirkan
+                                    pengalaman menginap yang unik dan menyatu dengan alam. Dengan pemandangan hijau dari
+                                    ketinggian dan udara yang sejuk, setiap momen di sini terasa damai dan penuh
+                                    ketenangan.
+                                </p>
                             </div><!-- Icon-Box -->
                         </div>
                     </div>
@@ -148,7 +164,7 @@
                                 </div>
                             </div>
                         @empty
-                            <p class="text-center">Belum ada pengurus</p>
+                            <p class="text-center">Tidak ada data pengurus</p>
                         @endforelse
                     </div>
 
@@ -560,8 +576,6 @@
             });
         });
     </script>
-
-
 
     <!-- Main JS File -->
     <script src="{{ asset('landing/assets/js/main.js') }}"></script>
