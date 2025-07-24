@@ -2,23 +2,71 @@
 @section('content')
     <div class="card">
         <div class="card-body">
+            <div class="row">
+                <div class="col-sm-6 col-xl-3">
+                    <div class="card rounded-3 p-3 d-flex flex-row align-items-center justify-content-between"
+                        style="background-color: #ebebeb; color: rgb(0, 0, 0);">
+                        <div>
+                            <h4 class="text-black-50">Hari Ini</h4>
+                            <h4 class="fw-bold mb-0">{{ $todayCount }}</h4>
+                        </div>
+                        <div class="d-flex align-items-center justify-content-center rounded-circle"
+                            style="background-color: rgba(255, 0, 0, 0.989); width: 50px; height: 50px;">
+                            <i class="ti ti-ticket" style="color: #ffffff;"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-xl-3">
+                    <div class="card rounded-3 p-3 d-flex flex-row align-items-center justify-content-between"
+                        style="background-color: #ebebeb; color: rgb(0, 0, 0);">
+                        <div>
+                            <h4 class="text-black-50">Minggu Ini</h4>
+                            <h4 class="fw-bold mb-0">{{ $weekCount }}</h4>
+                        </div>
+                        <div class="d-flex align-items-center justify-content-center rounded-circle"
+                            style="background-color: rgba(117, 212, 131, 0.989); width: 50px; height: 50px;">
+                            <i class="ti ti-ticket" style="color: #ffffff;"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-xl-3">
+                    <div class="card rounded-3 p-3 d-flex flex-row align-items-center justify-content-between"
+                        style="background-color: #ebebeb; color: rgb(0, 0, 0);">
+                        <div>
+                            <h4 class="text-black-50">Bulan Ini</h4>
+                            <h4 class="fw-bold mb-0">{{ $monthCount }}</h4>
+                        </div>
+                        <div class="d-flex align-items-center justify-content-center rounded-circle"
+                            style="background-color: rgba(179, 210, 255, 0.989); width: 50px; height: 50px;">
+                            <i class="ti ti-ticket" style="color: #ffffff;"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-xl-3">
+                    <div class="card rounded-3 p-3 d-flex flex-row align-items-center justify-content-between"
+                        style="background-color: #ebebeb; color: rgb(0, 0, 0);">
+                        <div>
+                            <h4 class="text-black-50">Tahun Ini</h4>
+                            <h4 class="fw-bold mb-0">{{ $yearCount }}</h4>
+                        </div>
+                        <div class="d-flex align-items-center justify-content-center rounded-circle"
+                            style="background-color: rgba(179, 210, 255, 0.989); width: 50px; height: 50px;">
+                            <i class="ti ti-ticket" style="color: #ffffff;"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
             <div class="d-flex align-items-center justify-content-between">
                 <h5 class="card-title fw-semibold mb-4">List Pembeli Tiket</h5>
             </div>
-            {{-- pesan sukse --}}
-            @if (session('success') || request()->has('success'))
-                <div class="alert alert-success">
-                    {{ session('success') ?? request()->get('success') }}
-                </div>
-            @endif
-            @if (Session::has('error'))
-                <div class="alert alert-danger">{{ Session::get('error') }}</div>
-            @endif
             <div class="table-responsive">
                 <table class="table text-nowrap mb-0 align-middle">
                     <thead class="text-dark fs-4">
                         <tr>
-                            {{-- number --}}
                             <th class="border-bottom-0">
                                 <h6 class="fw-semibold mb-0"></h6>
                             </th>

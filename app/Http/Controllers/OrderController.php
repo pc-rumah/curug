@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Order;
 use App\Mail\TiketMail;
 use Illuminate\Http\Request;
@@ -57,7 +58,6 @@ class OrderController extends Controller
         return view('etiket.checkout', compact('snapToken', 'order'));
     }
 
-
     public function callback(Request $request)
     {
         // Ambil data JSON dari request
@@ -94,7 +94,6 @@ class OrderController extends Controller
         Log::info('Order found:', ['order_id' => $order->id ?? null]);
     }
 
-
     public function invoice($id)
     {
         $order = Order::find($id);
@@ -107,8 +106,29 @@ class OrderController extends Controller
 
     public function index()
     {
+        $today = Carbon::today();
+        $startOfWeek = Carbon::now()->startOfWeek();
+        $endOfWeek = Carbon::now()->endOfWeek();
+        $startOfMonth = Carbon::now()->startOfMonth();
+        $startOfYear = Carbon::now()->startOfYear();
+
         $orders = Order::all();
-        return view('datatiket.index', compact('orders'));
+
+        $todayCount = Order::whereDate('created_at', $today)->count();
+
+        $weekCount = Order::whereBetween('created_at', [$startOfWeek, $endOfWeek])->count();
+
+        $monthCount = Order::whereMonth('created_at', Carbon::now()->month)->count();
+
+        $yearCount = Order::whereYear('created_at', Carbon::now()->year)->count();
+
+        return view('datatiket.index', compact(
+            'orders',
+            'todayCount',
+            'weekCount',
+            'monthCount',
+            'yearCount'
+        ));
     }
 
     public function pembeli()

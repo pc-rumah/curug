@@ -37,16 +37,19 @@ class TiketMail extends Mailable
         $templateId = $pdf->importPage(1);
         $pdf->useTemplate($templateId);
 
-        $pdf->SetFont('Arial', '', 12);
-        $pdf->SetTextColor(0, 0, 0);
+        $pdf->AddFont('ComicNeue', 'B', 'ComicNeue-Bold.php');
+        $pdf->AddFont('ComicNeue', '', 'ComicNeue-Bold.php');
+
+        $pdf->AddFont('ComicNeue', '', 'ComicNeue-Bold.php');
+        $pdf->SetFont('ComicNeue', '', 12);
 
         $pdf->SetXY(75, 16);
-        $pdf->SetFont('Arial', '', 14);
+        $pdf->SetFont('ComicNeue', 'B', 16);
         $pdf->SetTextColor(0, 51, 102);
         $pdf->Write(0, $this->order->name);
 
         $pdf->SetXY(100, 59);
-        $pdf->SetFont('Courier', 'B', 10);
+        $pdf->SetFont('ComicNeue', 'B', 10);
         $pdf->SetTextColor(255, 255, 255);
         $pdf->Write(0, str_pad($this->order->order_code, 4, '0', STR_PAD_LEFT));
 
